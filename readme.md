@@ -19,7 +19,7 @@ brane push dataprocessor 1.0.0
 
 Or install using the brane import function: 
 ```
-brane import lucasdegeus/braneLocation --kind ecu
+brane import lucasdegeus/braneProcessor --kind ecu
 ```
 
 
