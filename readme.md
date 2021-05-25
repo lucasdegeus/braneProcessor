@@ -17,6 +17,12 @@ brane build container.yml
 brane push dataprocessor 1.0.0
 ```
 
+Or install using the brane import function: 
+```
+brane import lucasdegeus/braneLocation --kind ecu
+```
+
+
 ## Usage average
 Input parameters are:
     * keys: an array of keys in a dictionary
