@@ -1,0 +1,66 @@
+name: dataprocessor
+version: 1.0.0
+kind: compute
+
+dependencies:
+  - python3
+  - python3-pip
+  - python3-yaml
+
+install:
+  - pip3 install pandas
+
+files:
+  - run.py
+
+entrypoint:
+  kind: task
+  exec: run.py
+
+actions:
+  'read_csv_column':
+    command:
+      args:
+        - read_csv_column
+      capture: marked
+    input:
+      - type: string
+        name: filename
+      - type: string
+        name: separator
+      - type: string
+        name: column
+    output:
+      - type: string[]
+        name: output
+
+  'average_over_dict_keys':
+    command:
+      args:
+        - average_over_dict_keys 
+      capture: marked
+    input:
+      - type: string[]
+        name: keys
+
+      - type: real[]
+        name: values
+    output:
+      - type: string[]
+        name: output
+
+  'average_over_dict_values':
+    command:
+      args:
+        - average_over_dict_values 
+      capture: marked
+    input:
+      - type: string[]
+        name: keys
+
+      - type: real[]
+        name: values
+    output:
+      - type: real[]
+        name: output
+
