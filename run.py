@@ -3,11 +3,12 @@ import os
 import sys
 import yaml
 import pandas as pd
+import numpy as np
 from collections import defaultdict
 from typing import List
 
 def read_csv_column(filename: str, separator: str, columname: str) -> List[str]:
-    return list(pd.read_csv(filename,sep=separator).loc[:,columname].astype('string'))
+    return list(pd.read_csv(filename,sep=separator).loc[:,columname].replace(np.nan, 'NA', regex=True).astype('string'))
 
 def average_over_dict(keys: List[str], values: List[float]) -> (List[str], List[float]):
     assert(len(keys) == len(values))
