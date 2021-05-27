@@ -1,8 +1,8 @@
-# dataprocessor
+# Dataprocessor
 Dataprocessor is a brane package for manipulating data and using various statistical functions on this data.
 Think about packages such as Pandas and Numpy for Python. Currently only two functions are identified:
-    * A function to read a csv and return one column of this csv
-    * A function that computes the average for each key in a dictionary. The keys are represented as a list and the values as well.
+* A function to read a csv and return one column of this csv
+* A function that computes the average for each key in a dictionary. The keys are represented as a list and the values as well.
 
 ## Installation
 
@@ -25,8 +25,9 @@ brane import lucasdegeus/braneProcessor --kind ecu
 
 ## Usage average
 Input parameters are:
-    * keys: an array of keys in a dictionary
-    * values: an array that should equal the length of keys and should contain the values associated with the keys.
+* keys: an array of keys in a dictionary
+* values: an array that should equal the length of keys and should contain the values associated with the keys.
+
 ```brane
 import dataprocessor;
 
@@ -39,11 +40,11 @@ average_over_dict_keys(keys, values);
 
 ## Usage csv
 Input parameters are:
-    * file: filename to read from
-    * separator: the seperator between columns. Usually a "," in a csv
-    * columname: the column to retrieve from this csv
+* file: filename to read from
+* separator: the seperator between columns. Usually a "," in a csv
+* columname: the column to retrieve from this csv
 ```brane
-read_csv_column(/data/<filename.csv>, ",", "columnname");
+read_csv_column("/data/<filename.csv>", ",", "columnname");
 ```
 
 ## Notes

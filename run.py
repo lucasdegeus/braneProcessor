@@ -7,9 +7,11 @@ import numpy as np
 from collections import defaultdict
 from typing import List
 
+# Reads one column for a CSV and casts all values in this column to string.
 def read_csv_column(filename: str, separator: str, columname: str) -> List[str]:
     return list(pd.read_csv(filename,sep=separator).loc[:,columname].replace(np.nan, 'NA', regex=True).astype('string'))
 
+# Makes a dictionary from two lists of equal size and returns two lists. One for keys and one for values.
 def average_over_dict(keys: List[str], values: List[float]) -> (List[str], List[float]):
     assert(len(keys) == len(values))
     # Group
@@ -29,7 +31,6 @@ def average_over_dict(keys: List[str], values: List[float]) -> (List[str], List[
 
 if __name__ == "__main__":
     command = sys.argv[1]
-    output = [float(1)]
     if (command == "read_csv_column"):
         argument_file = os.environ["FILENAME"]
         argument_separator = os.environ["SEPARATOR"]
@@ -43,6 +44,7 @@ if __name__ == "__main__":
         argument_keys = [str(os.environ[f"KEYS_{i}"]) for i in range(int(os.environ["KEYS"]))]
         argument_values = [float(os.environ[f"VALUES_{i}"]) for i in range(int(os.environ["VALUES"]))]
         averages = average_over_dict(argument_keys, argument_values)
+        # Use either keys or values depending on what is requested.
         output = averages[0] if command == 'average_over_dict_keys' else averages[1]
         print("--> START CAPTURE")
         print(yaml.dump({"output": output}))
